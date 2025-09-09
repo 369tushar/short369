@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    window.onload = function () {
+      // Get current URL parameters
+      const params = new URLSearchParams(window.location.search);
+
+      // Extract "id" parameter
+      const targetUrl = params.get("id");
+
+      // Redirect if valid
+      if (targetUrl) {
+        // Basic safety: allow only http/https URLs
+        if (targetUrl.startsWith("http://") || targetUrl.startsWith("https://")) {
+          window.location.href = targetUrl;
+        } else {
+          document.body.innerHTML = "<h2>Invalid redirect URL.</h2>";
+        }
+      } else {
+        document.body.innerHTML = "<h2>No redirect URL provided.</h2>";
+      }
+    };
+  </script>
+</head>
+<body>
+  <h2>Redirecting, please wait...</h2>
+</body>
+</html>
